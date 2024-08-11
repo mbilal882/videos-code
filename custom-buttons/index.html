@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* Base button styles */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s all;
+            outline: none;
+            border: 1px solid #00000048;
+
+            /* It is not important it is only for space right */
+            margin-right: 20px;
+        }
+
+        /* Success button */
+        .btn.success {
+            background-color: #198754;
+            color: #fff;
+        }
+
+        /* Primary button */
+        .btn.primary {
+            background-color: #0D6EFD;
+            color: #fff;
+        }
+
+        /* Secondary button */
+        .btn.secondary {
+            background-color: #6C757D;
+            color: #fff;
+        }
+
+        /* Light button */
+        .btn.light {
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+
+        /* Dark button */
+        .btn.dark {
+            background-color: #212529;
+            color: #fff;
+        }
+
+        /* Danger button */
+        .btn.danger {
+            background-color: #DC3545;
+            color: #fff;
+        }
+
+        /* Warnign button */
+        .btn.warning {
+            background-color: #FFC107;
+            color: #fff;
+        }
+
+        /* Info button */
+        .btn.info {
+            background-color: #0DCAF0;
+            color: #fff;
+        }
+
+        /* Button animation */
+        .btn:hover {
+            transform: scale(1.03);
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn primary">Primary</button>
+    <button class="btn secondary">Secondary</button>
+    <button class="btn success">Success </button>
+    <button class="btn danger">Danger</button>
+    <button class="btn warning">Warning</button>
+    <button class="btn info">Info</button>
+    <button class="btn light">Light</button>
+    <button class="btn dark">Dark</button>
+</body>
+
+</html>

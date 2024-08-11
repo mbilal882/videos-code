@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .upload-box {
+            width: 300px;
+            height: 200px;
+            border: 2px dashed #ccc;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            padding: 20px;
+        }
+
+        .drop-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .drop-area p {
+            margin: 0;
+        }
+
+        .preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .preview-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        #dropText {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        #fileInput {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="upload-box" id="uploadBox" onclick="openFileInput(event)">
+        <div class="drop-area" id="dropArea">
+            <p id="dropText">Click or Drag and drop an image here</p>
+            <input type="file" id="fileInput" accept="image/*" />
+        </div>
+    </div>
+    <div class="preview-container" id="previewContainer"></div>
+
+
+
+
+    <script>
+        const dropArea = document.getElementById('dropArea');
+        const dropText = document.getElementById('dropText');
+        const fileInput = document.getElementById('fileInput');
+        const previewContainer = document.getElementById('previewContainer');
+        const uploadBox = document.getElementById("uploadBox");
+
+        function openFileInput(event) {
+            if (event.target === dropArea) {
+                fileInput.click();
+            }
+        }
+
+        dropArea.addEventListener('dragover', (event) => {
+            event.preventDefault();
+            dropArea.classList.add('dragover');
+            dropText.textContent = 'Upload this picture';
+        });
+
+        dropArea.addEventListener('dragleave', () => {
+            dropArea.classList.remove('dragover');
+            dropText.textContent = 'Click or Drag and drop an image here';
+        });
+
+        dropArea.addEventListener('drop', (event) => {
+            event.preventDefault();
+            dropArea.classList.remove('dragover');
+            dropText.textContent = 'Click or Drag and drop an image here';
+            const files = event.dataTransfer.files;
+            handleFiles(files);
+        });
+
+        fileInput.addEventListener('change', (event) => {
+            const files = event.target.files;
+            handleFiles(files);
+        });
+
+        function handleFiles(files) {
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = () => {
+                        const imageSrc = reader.result;
+                        createImagePreview(imageSrc);
+                    };
+                }
+            }
+        }
+
+        function createImagePreview(imageSrc) {
+            const image = new Image();
+            image.src = imageSrc;
+            image.classList.add('preview-image');
+            previewContainer.appendChild(image);
+        }
+
+    </script>
+</body>
+
+</html>

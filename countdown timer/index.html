@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .countdown-container {
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #555;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .countdown-item {
+            margin: 0 10px;
+        }
+
+        .countdown-value {
+            font-size: 48px;
+            color: #333;
+        }
+
+        .countdown-label {
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="countdown-container">
+        <h2>Countdown Timer</h2>
+        <div class="countdown">
+            <div class="countdown-item">
+                <span class="countdown-value" id="days">00</span>
+                <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-value" id="hours">00</span>
+                <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-value" id="minutes">00</span>
+                <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-value" id="seconds">00</span>
+                <span class="countdown-label">Seconds</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set the countdown date (Year, Month - 1, Day, Hour, Minute, Second)
+        const countdownDate = new Date("2023-05-31T08:59:59").getTime();
+
+        // Update the countdown every second
+        const countdown = setInterval(function () {
+            // Get the current date and time
+            const now = new Date().getTime();
+
+            // Calculate the distance between now and the countdown date
+            const distance = countdownDate - now;
+
+            // Calculate days, hours, minutes, and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the countdown values
+            document.getElementById("days").textContent = padZero(days);
+            document.getElementById("hours").textContent = padZero(hours);
+            document.getElementById("minutes").textContent = padZero(minutes);
+            document.getElementById("seconds").textContent = padZero(seconds);
+
+            // If the countdown is finished, display a message
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.getElementById("days").textContent = "00";
+                document.getElementById("hours").textContent = "00";
+                document.getElementById("minutes").textContent = "00";
+                document.getElementById("seconds").textContent = "00";
+                document.getElementById("countdown").textContent = "Countdown Finished";
+            }
+        }, 1000);
+
+        // Function to pad zeros to single-digit values
+        function padZero(value) {
+            return value < 10 ? "0" + value : value;
+        }
+
+    </script>
+
+</body>
+
+</html>

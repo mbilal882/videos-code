@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .menu-toggle {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hamburger,
+        .hamburger:before,
+        .hamburger:after {
+            content: '';
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: #555;
+            transition: transform 0.3s ease;
+        }
+
+        .hamburger:before,
+        .hamburger:after {
+            margin-top: 6px;
+        }
+
+        .menu-toggle.open .hamburger {
+            transform: rotate(45deg);
+        }
+
+        .menu-toggle.open .hamburger:before {
+            transform: rotate(45deg) translate(-5px, 5px);
+        }
+
+        .menu-toggle.open .hamburger:after {
+            transform: rotate(90deg) translateX(-5px);
+        }
+
+        .menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 200px;
+            background-color: #dbdbdb;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform-origin: top center;
+            transform: scaleY(0);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu li {
+            padding: 10px 20px;
+        }
+
+        .menu li a {
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .menu li a:hover {
+            color: #ff6b6b;
+        }
+
+        .menu-toggle.open>.hamburger::before {
+            display: none;
+        }
+
+        .menu-toggle.open~.menu {
+            opacity: 1;
+            visibility: visible;
+            transform: scaleY(1);
+        }
+    </style>
+    <title>Hamburger Menu in html , css and javascript</title>
+</head>
+
+<body>
+
+
+    <div class="menu-container">
+        <div class="menu-toggle">
+            <div class="hamburger"></div>
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var menuToggle = document.querySelector('.menu-toggle');
+            var menu = document.querySelector('.menu');
+
+            menuToggle.addEventListener('click', function () {
+                this.classList.toggle('open');
+                menu.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+
+</html>

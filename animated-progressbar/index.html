@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Animated Progress Bar Example</title>
+    <style>
+        .progress-bar {
+            width: 200px;
+            height: 10px;
+            background-color: #eee;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #4287f5;
+            width: 0;
+            transition: width 3s ease;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-bar">
+        <div class="progress" style="width: 0;"></div>
+    </div>
+
+    <button onclick="startProgress()">Start Progress</button>
+
+    <script>
+        function startProgress() {
+            const progressBar = document.querySelector('.progress');
+            progressBar.style.width = '100%';
+        }
+
+    </script>
+</body>
+
+</html>

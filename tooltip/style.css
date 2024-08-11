@@ -1,0 +1,28 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tooltip {
+    position: relative;
+    text-align: center;
+}
+
+.tooltip::before {
+    content: attr(text);
+    display: block;
+    position: absolute;
+    bottom: -50px;
+    width: 100px;
+    left: -30px;
+    background-color: #515151;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    opacity: 0;
+}
+
+.tooltip:hover::before {
+    opacity: 1;
+}

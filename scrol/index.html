@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        html {
+            font-family: sans-serif;
+            scroll-snap-type: mandatory;
+            scroll-snap-points-y: repeat(100vh);
+            scroll-snap-type: y mandatory;
+        }
+
+        section {
+            border-bottom: 1px solid white;
+            padding: 1rem;
+            height: 100vh;
+            scroll-snap-align: start;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: center;
+            color: white;
+            width: 100%;
+            left: 0;
+            font-size: calc(1rem + 3vw);
+        }
+
+        .section-1 {
+            background-color: red;
+        }
+
+        .section-2 {
+            background-color: green;
+        }
+
+        .section-3 {
+            background-color: #000;
+        }
+
+        .section-4 {
+            background-color: aqua;
+        }
+
+        .section-5 {
+            background-color: blue;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <section class="section-1">
+        <h1>Section One</h1>
+    </section>
+    <section class="section-2">
+        <h1>Section Two</h1>
+    </section>
+    <section class="section-3">
+        <h1>Section Three</h1>
+    </section>
+    <section class="section-4">
+        <h1>Section Four</h1>
+    </section>
+    <section class="section-5">
+        <h1>Section Five</h1>
+    </section>
+    <script>
+        const gra = function (min, max) {
+            return Math.random() * (max - min) + min;
+        }
+        const init = function () {
+            let items = document.querySelectorAll('section');
+            for (let i = 0; i < items.length; i++) {
+                items[i].style.background = randomColor({ luminosity: 'light' });
+            }
+            cssScrollSnapPolyfill()
+        }
+        init();
+    </script>
+</body>
+
+</html>

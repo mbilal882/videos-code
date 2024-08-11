@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Image Overlay Effect Example</title>
+    <style>
+        .image-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-container:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay h2,
+        .overlay p {
+            margin: 0;
+            padding: 10px;
+        }
+
+        .overlay h2 {
+            font-size: 24px;
+        }
+
+        .overlay p {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="image-container">
+        <img src="image.jpg" height="500" width="500" alt="Image">
+        <div class="overlay">
+            <h2>Image Title</h2>
+            <p>Image Description</p>
+        </div>
+    </div>
+</body>
+
+</html>

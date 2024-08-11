@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Loading</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .flex {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .heading-skeleton {
+            width: 200px;
+            height: 20px;
+            border-radius: 5px;
+            background-color: #d1d0d0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .img-loading {
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            background-color: #d1d0d0;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .paragraph-skeleton {
+            width: 200px;
+            height: 10px;
+            border-radius: 30px;
+            background-color: #d1d0d0;
+            position: relative;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .heading-skeleton::before,
+        .img-loading::before,
+        .paragraph-skeleton::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, #f8f8f885, transparent);
+            animation: loading-skeleton-animation 1.5s infinite;
+        }
+
+        @keyframes loading-skeleton-animation {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex">
+        <div class="img-loading"></div>
+        <div class="heading-skeleton"></div>
+        <div class="paragraph-skeleton"></div>
+        <div class="paragraph-skeleton"></div>
+        <div class="paragraph-skeleton"></div>
+    </div>
+</body>
+
+</html>

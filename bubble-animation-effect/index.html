@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .speech-bubble {
+            position: relative;
+            background-color: #000000;
+            border-radius: 8px;
+            padding: 15px 30px;
+            color: white;
+            width: fit-content;
+            animation: scaleIn 0.5s ease-in-out;
+        }
+
+        .content {
+            margin-bottom: 10px;
+        }
+
+        @keyframes scaleIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="speech-bubble">
+        <div class="content">
+            <p>This is a speech bubble with animation.</p>
+        </div>
+    </div>
+</body>
+
+</html>

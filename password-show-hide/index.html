@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Password Hide and Show</title>
+    <style>
+        .d-flex {
+            display: flex;
+        }
+
+        input {
+            padding: 10px;
+            outline: none;
+            font-size: 18px;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+            border: 1px solid #333;
+            border-right: 0px;
+        }
+
+        button {
+            padding: 10px 22px;
+            cursor: pointer;
+            background-color: transparent;
+            color: #000000;
+            border: 0px;
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+            border: 1px solid #000000;
+            border-left: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="d-flex">
+        <input type="password" id="password_input">
+        <button onclick="handleToggle()">
+            <i class="fa fa-eye-slash" id="icon"></i>
+        </button>
+    </div>
+    <script src="https://kit.fontawesome.com/f4fcc40626.js" crossorigin="anonymous"></script>
+    <script>
+        let input = document.getElementById("password_input")
+        let icon = document.getElementById("icon")
+
+        function handleToggle() {
+            if (input.className.includes("active")) {
+                input.setAttribute("type", "text")
+                icon.className = "fa fa-eye"
+                input.className = ""
+            } else {
+                input.setAttribute("type", "password")
+                icon.className = "fa fa-eye-slash"
+                input.className = "active"
+            }
+        }
+    </script>
+</body>
+
+</html>
